@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+dist-ssr/
+
+# Environment & Secrets (절대 외부 노출 금지)
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Vercel
+.vercel/
+
+# Memo / Scratch / Test files (비밀값 노출 위험)
+memo.md
+memo*.md
+note.md
+note*.md
+scratch/
+tmp/
+*.test.js
+*.test.ts
+*.local.*
+*.bak
+*.old
+
+# AI agent instruction (외부 노출 방지)
+GEMINI.md
+GEMINI*.md
+CLAUDE.md
