@@ -1,5 +1,5 @@
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Search, FileText, CheckSquare, MessageSquare, Upload, Sparkles } from 'lucide-react';
 
 const Sidebar = () => {
@@ -13,10 +13,10 @@ const Sidebar = () => {
 
   return (
     <aside className="w-64 bg-[#1C2B4B] flex flex-col h-full shadow-lg text-gray-300">
-      <div className="h-16 flex items-center px-6 border-b border-white/10">
+      <Link to="/search" className="h-16 flex items-center px-6 border-b border-white/10 hover:bg-white/5 transition-colors cursor-pointer">
         <Sparkles className="w-6 h-6 text-blue-400 mr-2.5" />
         <h1 className="text-2xl font-bold text-white tracking-tight">Guidely</h1>
-      </div>
+      </Link>
       
       <nav className="flex-1 py-6 px-3 space-y-1">
         {navItems.map((item) => (
