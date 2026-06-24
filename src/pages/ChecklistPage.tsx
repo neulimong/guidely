@@ -86,7 +86,9 @@ const ChecklistPage = () => {
         contextString = contextTexts.join('\n\n---\n\n');
       }
 
-      const prompt = `아래 문서를 참고하여 [상황]에 대한 체크리스트를 작성하세요. 반드시 '- [ ] 할일' 형식의 마크다운 체크박스 리스트로 만들어주세요.\n\n[문서]\n${contextString}\n\n[상황]\n${scenario}\n\n체크리스트:`;
+      const prompt = `아래 문서를 참고하여 [상황]에 대한 체크리스트를 작성하세요. 
+어떤 설명이나 안내 문구도 앞에 붙이지 말고, 반드시 '- [ ] 할일' 형식의 마크다운 체크박스 리스트 본문만 바로 출력하세요.
+\n[문서]\n${contextString}\n\n[상황]\n${scenario}\n\n체크리스트:`;
       const result = await generateChecklist(prompt);
       setContent(result);
     } catch (err: any) {
@@ -176,12 +178,14 @@ const ChecklistPage = () => {
       <div className="flex-1 overflow-y-auto p-8 pb-32">
         <div className="max-w-4xl mx-auto space-y-8">
           
-          <div className="text-center mt-8 mb-12 p-10 bg-gradient-to-br from-teal-50 via-blue-50 to-transparent rounded-3xl border border-white shadow-sm">
-            <div className="inline-flex items-center justify-center p-4 bg-white rounded-2xl mb-6 shadow-sm">
-              <ListChecks className="w-12 h-12 text-teal-600" />
+          <div className="mt-6 mb-8 p-5 bg-gradient-to-br from-teal-50 via-blue-50 to-transparent rounded-2xl border border-white shadow-sm flex items-center gap-4">
+            <div className="flex-shrink-0 flex items-center justify-center p-3 bg-white rounded-xl shadow-sm">
+              <ListChecks className="w-7 h-7 text-teal-600" />
             </div>
-            <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">상황별 체크리스트</h1>
-            <p className="text-gray-500 mt-4 text-lg">상황을 입력하면 관련 문서 기반의 맞춤형 체크리스트를 생성합니다.</p>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900 tracking-tight">상황별 체크리스트</h1>
+              <p className="text-gray-500 mt-0.5 text-sm">상황을 입력하면 관련 문서 기반의 맞춤형 체크리스트를 생성합니다.</p>
+            </div>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">

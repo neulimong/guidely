@@ -410,9 +410,14 @@ const UploadPage = () => {
 
   return (
     <div className="p-8 h-full bg-[#F8F9FA] flex flex-col">
-      <div className="mb-8 p-8 bg-gradient-to-r from-blue-50 via-indigo-50 to-transparent rounded-3xl border border-white shadow-sm">
-        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">문서 업로드</h1>
-        <p className="text-gray-500 mt-2 text-lg">PDF, DOCX, TXT 파일을 업로드하여 내용을 추출하고 AI로 분석하세요.</p>
+      <div className="mb-6 p-5 bg-gradient-to-r from-blue-50 via-indigo-50 to-transparent rounded-2xl border border-white shadow-sm flex items-center gap-4">
+        <div className="flex-shrink-0 flex items-center justify-center p-3 bg-white rounded-xl shadow-sm">
+          <UploadCloud className="w-7 h-7 text-blue-600" />
+        </div>
+        <div>
+          <h1 className="text-xl font-bold text-gray-900 tracking-tight">문서 업로드</h1>
+          <p className="text-gray-500 mt-0.5 text-sm">PDF, DOCX, TXT 파일을 업로드하여 내용을 추출하고 AI로 분석하세요.</p>
+        </div>
       </div>
 
       {/* Dropzone Area */}

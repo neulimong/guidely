@@ -155,7 +155,19 @@ const SearchPage = () => {
 
       // 3. Generate answer using Gemini 2.0 Flash
       const contextString = contextTexts.join('\n\n---\n\n');
-      const prompt = `당신은 회사 업무 전문가입니다. 아래 문서를 참고해서 질문에 답변해주세요.\n\n[문서 내용]\n${contextString}\n\n[질문]\n${searchQuery}\n\n답변:`;
+      const prompt = `당신은 10년 경력의 기업 운영관리 전문가입니다.
+직원들의 업무 문의에 대해 사내 규정과 매뉴얼을 근거로 정확하고 실용적인 답변을 제공합니다.
+- 문서에 있는 내용만 답변하고, 없으면 "해당 내용이 문서에 없습니다"라고 말하세요.
+- 답변은 핵심만 간결하게, 번호나 글머리로 정리하세요.
+- 본문만 바로 출력하세요. 어떤 설명이나 안내 문구도 앞에 붙이지 마세요.
+
+[문서 내용]
+${contextString}
+
+[질문]
+${searchQuery}
+
+답변:`;
       
       const generatedText = await generateAnswer(prompt);
       setAnswer(generatedText);
@@ -177,16 +189,18 @@ const SearchPage = () => {
 
   return (
     <div className="flex flex-col h-full bg-[#F8F9FA] relative">
-      <div className="flex-1 overflow-y-auto p-8 pb-32">
-        <div className="max-w-3xl mx-auto space-y-8">
+      <div className="flex-1 overflow-y-auto p-8 pb-48">
+        <div className="max-w-4xl mx-auto space-y-8">
           
           {/* Header */}
-          <div className="text-center mt-8 mb-12 p-10 bg-gradient-to-br from-blue-50 via-purple-50 to-transparent rounded-3xl border border-white shadow-sm">
-            <div className="inline-flex items-center justify-center p-4 bg-white rounded-2xl mb-6 shadow-sm">
-              <Sparkles className="w-12 h-12 text-blue-600" />
+          <div className="mt-6 mb-8 p-5 bg-gradient-to-br from-blue-50 via-purple-50 to-transparent rounded-2xl border border-white shadow-sm flex items-center gap-4">
+            <div className="flex-shrink-0 flex items-center justify-center p-3 bg-white rounded-xl shadow-sm">
+              <Sparkles className="w-7 h-7 text-blue-600" />
             </div>
-            <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">무엇이든 물어보세요</h1>
-            <p className="text-gray-500 mt-4 text-lg">회사 업무, 규정, 절차 등 궁금한 점을 AI가 문서 기반으로 답변해 드립니다.</p>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900 tracking-tight">무엇이든 물어보세요</h1>
+              <p className="text-gray-500 mt-0.5 text-sm">회사 업무, 규정, 절차 등 궁금한 점을 AI가 문서 기반으로 답변해 드립니다.</p>
+            </div>
           </div>
 
           {/* Error Message */}
@@ -245,7 +259,7 @@ const SearchPage = () => {
 
       {/* Input Area (Sticky at bottom) */}
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#F8F9FA] via-[#F8F9FA] to-transparent pt-10 pb-8 px-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           
           {/* Quick Chips */}
           <div className="flex flex-wrap justify-center gap-2 mb-4">

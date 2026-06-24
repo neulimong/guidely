@@ -85,9 +85,14 @@ const CSPage = () => {
         contextString = contextTexts.join('\n\n---\n\n');
       }
 
-      const prompt = `당신은 기업 운영 전문가입니다. 아래 회사 정책 문서를 참고하여 직원 문의에 대한 답변 초안을 ${tone}로 작성하세요.
-참고 문서에 관련 내용이 없다면, 절대 내용을 지어내거나 일반적인 조언을 하지 마세요.
-대신 '해당 내용은 현재 등록된 사내 문서에서 확인되지 않습니다. 담당 부서에 직접 문의해 주세요.'라고만 답변하세요.
+      const prompt = `당신은 기업 경영지원팀 시니어 담당자입니다.
+직원 문의에 대해 회사 규정을 근거로 명확하고 친절한 답변을 작성합니다.
+- 반드시 제공된 [문서] 내용에 명시된 사실만으로 답변하세요. 상식이나 외부 지식을 동원하여 임의로 판단(예: 식사는 접대비 등)하지 마세요.
+- 질문자가 문의한 상황(예: 거래처 식사)을 문서에 없는 특정 계정과목이나 항목(예: 접대비)으로 임의 분류하여 "OOO는 XXX로 처리됩니다." 와 같은 문장을 작성하지 마세요. 문서에 명시되지 않은 분류는 아예 언급조차 하지 마세요.
+- 규정에 없는 내용은 절대로 추측하지 말고 "해당 내용은 사내 문서에서 확인되지 않으니 담당 부서 확인이 필요합니다."라고 처리하세요.
+- 문의 내용에 포함된 수신자 이름(예: "안녕하세요 하늘님"의 하늘)을 질문자의 이름으로 착각하지 마세요. 답변은 항상 "안녕하세요."로만 시작하고, 특정 이름을 지칭하지 마세요.
+- ${tone} 어조로 작성하되, 핵심 정보가 먼저 나오도록 하세요.
+- 답변 초안만 바로 출력하세요. 어떤 설명이나 안내 문구도 앞에 붙이지 마세요.
 
 [문서]
 ${contextString}
@@ -120,12 +125,14 @@ ${inquiry}
       <div className="flex-1 overflow-y-auto p-8 pb-32">
         <div className="max-w-4xl mx-auto space-y-8">
           
-          <div className="text-center mt-8 mb-12 p-10 bg-gradient-to-br from-orange-50 via-red-50 to-transparent rounded-3xl border border-white shadow-sm">
-            <div className="inline-flex items-center justify-center p-4 bg-white rounded-2xl mb-6 shadow-sm">
-              <MessageSquare className="w-12 h-12 text-orange-600" />
+          <div className="mt-6 mb-8 p-5 bg-gradient-to-br from-orange-50 via-red-50 to-transparent rounded-2xl border border-white shadow-sm flex items-center gap-4">
+            <div className="flex-shrink-0 flex items-center justify-center p-3 bg-white rounded-xl shadow-sm">
+              <MessageSquare className="w-7 h-7 text-orange-600" />
             </div>
-            <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">사내 문의 답변 초안</h1>
-            <p className="text-gray-500 mt-4 text-lg">부서 간 문의나 직원 요청에 대해 회사 규정 기반의 답변 초안을 작성합니다.</p>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900 tracking-tight">사내 문의 답변 초안</h1>
+              <p className="text-gray-500 mt-0.5 text-sm">부서 간 문의나 직원 요청에 대해 회사 규정 기반의 답변 초안을 작성합니다.</p>
+            </div>
           </div>
 
           <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">

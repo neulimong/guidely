@@ -129,7 +129,15 @@ const SOPPage = () => {
         contextString = "관련된 참고 문서를 찾지 못했습니다. 일반적인 기준으로 작성해주세요.";
       }
 
-      const prompt = `당신은 기업 운영 전문가입니다.
+      const prompt = `당신은 기업 운영 프로세스 설계 전문가입니다.
+실무자가 바로 활용할 수 있는 명확하고 구체적인 SOP를 작성합니다.
+- 현장에서 실제로 따라할 수 있을 만큼 구체적으로 작성하세요.
+- 모호한 표현("적절히", "필요시") 대신 구체적 행동을 명시하세요.
+- 담당자, 기한, 확인 방법이 포함되도록 작성하세요.
+- 입력된 [업무명]이 줄임말이거나 불명확한 경우, [참고 문서]의 내용을 바탕으로 공식적이고 정확한 업무명(예: "법카 정산" → "법인카드 정산")으로 확장하여 SOP 제목에 사용하세요.
+- SOP 제목은 반드시 # 헤딩으로 시작하세요. 예시: # 경비정산 처리 절차 (SOP)
+- SOP 본문만 바로 출력하세요. 어떤 설명이나 안내 문구도 앞에 붙이지 마세요.
+
 아래 [참고 문서]를 바탕으로 [업무명]에 대한 SOP를 작성하세요.
 반드시 다음 6개 항목 순서대로 작성하세요:
 1. 업무 목적
@@ -180,12 +188,14 @@ SOP 내용:`;
         <div className="max-w-4xl mx-auto space-y-8">
           
           {/* Header */}
-          <div className="text-center mt-8 mb-12 p-10 bg-gradient-to-br from-indigo-50 via-purple-50 to-transparent rounded-3xl border border-white shadow-sm">
-            <div className="inline-flex items-center justify-center p-4 bg-white rounded-2xl mb-6 shadow-sm">
-              <BookOpen className="w-12 h-12 text-indigo-600" />
+          <div className="mt-6 mb-8 p-5 bg-gradient-to-br from-indigo-50 via-purple-50 to-transparent rounded-2xl border border-white shadow-sm flex items-center gap-4">
+            <div className="flex-shrink-0 flex items-center justify-center p-3 bg-white rounded-xl shadow-sm">
+              <BookOpen className="w-7 h-7 text-indigo-600" />
             </div>
-            <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">SOP 자동 생성</h1>
-            <p className="text-gray-500 mt-4 text-lg">업무명을 입력하면 회사 규정과 매뉴얼을 바탕으로 표준작업절차서(SOP)를 작성합니다.</p>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900 tracking-tight">SOP 자동 생성</h1>
+              <p className="text-gray-500 mt-0.5 text-sm">업무명을 입력하면 회사 규정과 매뉴얼을 바탕으로 표준작업절차서(SOP)를 작성합니다.</p>
+            </div>
           </div>
 
           {/* Input Area */}
